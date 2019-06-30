@@ -1,0 +1,1 @@
+{"version":3,"file":"react-stack-layout.esm.js","sources":["../src/index.tsx"],"sourcesContent":["import React from 'react'\n\n// Delete me\nexport const Thing = () => {\n  return <div>the snozzberries taste like snozzberries</div>\n}\n"],"names":["Thing","React"],"mappings":";;IAGaA,KAAK,GAAG,SAARA,KAAQ;SACZC,mBAAA,MAAA,MAAA,4CAAA,CAAP;CADK;;;;"}
