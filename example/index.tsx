@@ -1,12 +1,12 @@
 import 'react-app-polyfill/ie11'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Thing } from '../.'
+import { Example } from 'src/Example'
 
 const App = () => {
   return (
     <div>
-      <Thing />
+      <Example />
     </div>
   )
 }
