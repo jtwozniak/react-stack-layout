@@ -1,6 +1,10 @@
 import React from 'react'
-export declare const Stack: ({
-  children,
-}: {
-  children?: React.ReactNode
-}) => JSX.Element
+import { StackTypes } from './utils'
+declare type Props = {
+  children: React.ReactElement | React.ReactElement[]
+}
+export declare const Stack: {
+  ({ children }: Props): JSX.Element
+  displayName: StackTypes
+}
+export {}

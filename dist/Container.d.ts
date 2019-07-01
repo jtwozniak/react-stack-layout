@@ -1,13 +1,18 @@
 import React from 'react'
-declare type Props = {
-  id?: string
-  component: React.ComponentType
-  isVisible: boolean
-  props?: any
+import { StackTypes } from './utils'
+export declare const Container: {
+  ({
+    isVisible,
+    component: Comp,
+    children,
+  }: React.PropsWithChildren<{
+    id?: string | undefined
+    component: React.ComponentType<{}>
+    isVisible: boolean
+    props?: any
+  }>): JSX.Element | null
+  defaultProps: {
+    isVisible: boolean
+  }
+  displayName: StackTypes
 }
-export declare const Container: ({
-  isVisible,
-  component: Comp,
-  props,
-}: Props) => JSX.Element | null
-export {}
