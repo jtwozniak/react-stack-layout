@@ -1,31 +1,25 @@
 import React from 'react'
 
-var StackTypes
+var ST
 
-;(function(StackTypes) {
-  StackTypes['Stack'] = 'Stack'
-  StackTypes['RowStack'] = 'RowStack'
-  StackTypes['ColumnStack'] = 'ColumnStack'
-  StackTypes['Container'] = 'Container'
-})(StackTypes || (StackTypes = {}))
+;(function(ST) {
+  ST['Tab'] = 'Tab'
+  ST['Row'] = 'Row'
+  ST['Column'] = 'Column'
+  ST['Container'] = 'Container'
+})(ST || (ST = {}))
 
 var validateChildren = function validateChildren(children) {
   var containers = 0
   return children.every(function(child) {
-    if (child.type.name === StackTypes.Container) {
+    if (child.type.name === ST.Container) {
       containers++
       return containers < 1
     }
 
-    return StackTypes[child.type.name]
+    return ST[child.type.name]
   })
 }
-
-var ColumnStack = function ColumnStack(_ref) {
-  var children = _ref.children
-  return React.createElement('div', null, children)
-}
-ColumnStack.displayName = StackTypes.ColumnStack
 
 var Stack = function Stack(_ref) {
   var children = _ref.children
@@ -42,20 +36,12 @@ var Stack = function Stack(_ref) {
         display: 'inline-block',
         width: '100%',
         height: '100%',
-        backgroundColor: 'black',
-        color: 'white',
       },
     },
     children
   )
 }
-Stack.displayName = StackTypes.Stack
-
-var RowStack = function RowStack(_ref) {
-  var children = _ref.children
-  return React.createElement('div', null, children)
-}
-RowStack.displayName = StackTypes.RowStack
+Stack.displayName = 'Stack'
 
 var Container = function Container(_ref) {
   var isVisible = _ref.isVisible,
@@ -72,7 +58,7 @@ var Container = function Container(_ref) {
 Container.defaultProps = {
   isVisible: true,
 }
-Container.displayName = StackTypes.Container
+Container.displayName = 'Container'
 
-export { ColumnStack, Container, RowStack, Stack }
+export { Container, ST, Stack }
 //# sourceMappingURL=react-stack-layout.esm.js.map

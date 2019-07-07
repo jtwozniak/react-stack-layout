@@ -1,5 +1,4 @@
 import React from 'react'
-import { StackTypes } from './utils'
 
 type Props = React.PropsWithChildren<{
   id?: string
@@ -16,4 +15,4 @@ Container.defaultProps = {
   isVisible: true,
 }
 
-Container.displayName = StackTypes.Container
+Container.displayName = 'Container'

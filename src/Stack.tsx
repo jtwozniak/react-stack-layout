@@ -1,7 +1,10 @@
 import React from 'react'
-import { StackTypes, validateChildren } from './utils'
+import { ST, validateChildren } from './utils'
 
 type Props = {
+  type: ST
+  width: string | number
+  height: string | number
   children: React.ReactElement | React.ReactElement[]
 }
 
@@ -19,8 +22,6 @@ export const Stack = ({ children }: Props) => {
         display: 'inline-block',
         width: '100%',
         height: '100%',
-        backgroundColor: 'black',
-        color: 'white',
       }}
     >
       {children}
@@ -28,4 +29,4 @@ export const Stack = ({ children }: Props) => {
   )
 }
 
-Stack.displayName = StackTypes.Stack
+Stack.displayName = 'Stack'

@@ -1,5 +1,4 @@
 import React from 'react'
-import { StackTypes } from './utils'
 export declare const Container: {
   ({
     isVisible,
@@ -14,5 +13,5 @@ export declare const Container: {
   defaultProps: {
     isVisible: boolean
   }
-  displayName: StackTypes
+  displayName: string
 }
