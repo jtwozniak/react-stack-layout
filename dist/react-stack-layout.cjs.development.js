@@ -5,24 +5,32 @@ function _interopDefault(ex) {
 }
 
 var React = _interopDefault(require('react'))
+var warning = _interopDefault(require('tiny-warning'))
 
 ;(function(ST) {
   ST['Tab'] = 'Tab'
   ST['Row'] = 'Row'
   ST['Column'] = 'Column'
-  ST['Container'] = 'Container'
 })(exports.ST || (exports.ST = {}))
 
-var validateChildren = function validateChildren(children) {
-  var containers = 0
-  return children.every(function(child) {
-    if (child.type.name === exports.ST.Container) {
-      containers++
-      return containers < 1
-    }
+var ComponentsNames
 
-    return exports.ST[child.type.name]
-  })
+;(function(ComponentsNames) {
+  ComponentsNames['Stack'] = 'Stack'
+  ComponentsNames['Container'] = 'Container'
+})(ComponentsNames || (ComponentsNames = {}))
+
+var ComponentNamesKeys =
+  /*#__PURE__*/
+  Object.keys(ComponentsNames)
+
+var validateChildren = function validateChildren(children) {
+  warning(
+    children.some(function(child) {
+      return !ComponentNamesKeys.includes(child.type.name)
+    }),
+    'Invalid Stack configuration'
+  )
 }
 
 var Stack = function Stack(_ref) {
@@ -32,7 +40,7 @@ var Stack = function Stack(_ref) {
     : children
     ? [children]
     : []
-  console.log(validateChildren(childrenArray))
+  validateChildren(childrenArray)
   return React.createElement(
     'div',
     {

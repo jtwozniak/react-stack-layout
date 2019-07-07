@@ -1,4 +1,5 @@
 import React from 'react'
+import warning from 'tiny-warning'
 
 var ST
 
@@ -6,19 +7,28 @@ var ST
   ST['Tab'] = 'Tab'
   ST['Row'] = 'Row'
   ST['Column'] = 'Column'
-  ST['Container'] = 'Container'
 })(ST || (ST = {}))
 
-var validateChildren = function validateChildren(children) {
-  var containers = 0
-  return children.every(function(child) {
-    if (child.type.name === ST.Container) {
-      containers++
-      return containers < 1
-    }
+var ComponentsNames
 
-    return ST[child.type.name]
-  })
+;(function(ComponentsNames) {
+  ComponentsNames['Stack'] = 'Stack'
+  ComponentsNames['Container'] = 'Container'
+})(ComponentsNames || (ComponentsNames = {}))
+
+var ComponentNamesKeys =
+  /*#__PURE__*/
+  Object.keys(ComponentsNames)
+
+var validateChildren = function validateChildren(children) {
+  process.env.NODE_ENV !== 'production'
+    ? warning(
+        children.some(function(child) {
+          return !ComponentNamesKeys.includes(child.type.name)
+        }),
+        'Invalid Stack configuration'
+      )
+    : void 0
 }
 
 var Stack = function Stack(_ref) {
@@ -28,7 +38,7 @@ var Stack = function Stack(_ref) {
     : children
     ? [children]
     : []
-  console.log(validateChildren(childrenArray))
+  validateChildren(childrenArray)
   return React.createElement(
     'div',
     {

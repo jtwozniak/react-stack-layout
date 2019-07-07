@@ -40,6 +40,7 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
+    "tiny-warning": "^1.0.2",
     "utils": "^0.3.1"
   }
 }
